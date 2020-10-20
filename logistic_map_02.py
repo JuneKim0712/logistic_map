@@ -36,7 +36,7 @@ class graphit:
         plt.ylabel('Equilibrium')
         plt.xlabel('growth rate')
         while self.gr_rate < 1:
-            plt.plot(self.gr_rate, 0, 'ro', markersize=1, markerfacecolor='k', mec='k')
+            plt.plot(self.gr_rate, 0, 'ro', markersize=0.5, markerfacecolor='k', mec='k')
             plt.pause(0.000001)
             self.gr_rate = np.round(self.gr_rate + grpt, round_up)
         while self.gr_rate < limit:
