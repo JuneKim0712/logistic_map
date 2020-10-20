@@ -22,17 +22,18 @@ class graphit:
         return self.all_result
 
     def graphcl(self, limit, show_t, grpt):
-        grpt = grpt * 10000
-        while self.gr_rate > limit:
+        round_up = len(str(grpt)) - 1
+        while self.gr_rate < limit:
             self.all_result = np.array([])
             plt.clf()
             plt.plot(self.show(show_t), marker='o', markersize=5, markerfacecolor='k')
+            plt.plot(0, 0)
             plt.xlabel('Times')
             plt.title('growth rate: ' + str(self.gr_rate))
             plt.ylabel('number of result')
             plt.draw()
             plt.pause(0.00001)
-            self.gr_rate = (round(round(round(round(self.gr_rate, 4) * 10, 4) * 10, 4) * 10, 4) * 10 + grpt) / 10000
+            self.gr_rate = np.round(self.gr_rate + grpt, round_up)
             continue
 
 
