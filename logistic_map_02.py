@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import time as t
 import numpy as np
 
+
 def simplify(list_):
     list_.sort()
     b = np.array([])
@@ -11,6 +12,7 @@ def simplify(list_):
         if list_.size == 0:
             return b
 
+
 class graphit:
     def __init__(self, initial_population, growth_rate):
         self.gr_rate = growth_rate
@@ -19,7 +21,7 @@ class graphit:
         self.test_popul = initial_population
 
     def show(self, times):
-        while 0 == 0:
+        while True:
             if times < 1:
                 self.test_popul = self.initial
                 return simplify(self.all_result[175:])
@@ -30,32 +32,24 @@ class graphit:
             continue
 
     def graphcl(self, limit, show_t, grpt):
-        round_up = len(str(grpt))
+        grpt = grpt * 10000
         plt.plot(4, 1)
-        while 0 == 0:
-            if self.gr_rate > limit:
-                plt.show()
-                return
+        plt.ylabel('Equilibrium')
+        plt.xlabel('growth rate')
+        while self.gr_rate < 1:
+            plt.plot(self.gr_rate, 0, 'ro', markersize=1, markerfacecolor='k', mec='k')
+            plt.pause(0.000001)
+            self.gr_rate = (round(round(round(round(self.gr_rate, 4) * 10, 4) * 10, 4) * 10, 4) * 10 + grpt) / 10000
+        while self.gr_rate < limit:
             self.all_result = np.array([], dtype=float)
             y = self.show(show_t)
-            plt.plot([self.gr_rate] * (len(y)), y, 'ro', markersize=1, markerfacecolor='k', mec='k')
-            plt.xlabel('growth rate')
-            plt.ylabel('result')
-            self.gr_rate = np.round(self.gr_rate + grpt, round_up)
+            plt.plot([self.gr_rate] * (len(y)), y, 'ro', markersize=0.5, markerfacecolor='k', mec='k')
+            plt.pause(0.0000001)
+            self.gr_rate = (round(round(round(round(self.gr_rate, 4) * 10, 4) * 10, 4) * 10, 4) * 10 + grpt) / 10000
             continue
+        return
 
 
-tm = t.time()
 g = graphit(0.5, 0)
-g.graphcl(4, 600, 0.0001)
-print(t.time()-tm)
-
-
-
-
-
-# """ note: June, Please make it another version to show the result but not the progress """
-
-
-
+g.graphcl(4, 250, 0.01)
  
