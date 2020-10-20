@@ -31,23 +31,24 @@ class graphit:
         return simplify(self.all_result[200:])
 
     def graphcl(self, limit, show_t, grpt):
-        grpt = grpt * 10000
+        round_up = len(str(grpt)) - 1
         plt.plot(4, 1)
         plt.ylabel('Equilibrium')
         plt.xlabel('growth rate')
         while self.gr_rate < 1:
             plt.plot(self.gr_rate, 0, 'ro', markersize=1, markerfacecolor='k', mec='k')
             plt.pause(0.000001)
-            self.gr_rate = (round(round(round(round(self.gr_rate, 4) * 10, 4) * 10, 4) * 10, 4) * 10 + grpt) / 10000
+            self.gr_rate = np.round(self.gr_rate + grpt, round_up)
         while self.gr_rate < limit:
             self.all_result = np.array([], dtype=float)
             y = self.show(show_t)
             plt.plot([self.gr_rate] * (len(y)), y, 'ro', markersize=0.5, markerfacecolor='k', mec='k')
-            plt.pause(0.0000001)
-            self.gr_rate = (round(round(round(round(self.gr_rate, 4) * 10, 4) * 10, 4) * 10, 4) * 10 + grpt) / 10000
+            plt.pause(0.000001)
+            self.gr_rate = np.round(self.gr_rate + grpt, round_up)
             continue
+        plt.show()
         return
 
 
 g = graphit(0.5, 0)
-g.graphcl(4, 250, 0.01)
+g.graphcl(4, 300, 0.01)
