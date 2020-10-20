@@ -43,8 +43,7 @@ class graphit:
         return self.all_result
 
     def graphall(self, limit, show_t1, show_t2, grpt):
-
-        round_up = len(str(grpt))
+        round_up = len(str(grpt)) - 1
         right = plt.subplot(212)
         right.plot(limit, 1)
         left = plt.subplot(211)
