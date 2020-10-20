@@ -21,15 +21,14 @@ class graphit:
         self.test_popul = initial_population
 
     def show(self, times):
-        while True:
-            if times < 1:
-                self.test_popul = self.initial
-                return simplify(self.all_result[175:])
+        while times > 1:
             self.all_result = np.append(self.all_result,
                                         np.array([self.gr_rate * self.test_popul * (1 - self.test_popul)]))
             self.test_popul = self.all_result[-1]
             times -= 1
             continue
+        self.test_popul = self.initial
+        return simplify(self.all_result[200:])
 
     def graphcl(self, limit, show_t, grpt):
         grpt = grpt * 10000
@@ -52,4 +51,3 @@ class graphit:
 
 g = graphit(0.5, 0)
 g.graphcl(4, 250, 0.01)
- 
