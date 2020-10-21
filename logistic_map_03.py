@@ -3,6 +3,7 @@ import time as t
 import timeit
 import numpy as np
  
+ 
 def simplify(list_):
     list_.sort()
     b = np.array([])
