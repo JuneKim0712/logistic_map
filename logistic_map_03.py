@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import time as t
-import timeit
 import numpy as np
  
  
@@ -75,8 +73,6 @@ class graphit:
             continue
         return
  
- 
-tm = t.time()
+
 g = graphit(0.5, 0)
 g.graphall(4, 50, 600, 0.01)
-print(t.time() - tm)
