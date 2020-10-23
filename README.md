@@ -1,7 +1,6 @@
 # logistic_map
 
-I'm making a logistic map influence by veritasrium video
-and this is my first graphing program
+This is my program making graphing program
 
 First file: program that graph and shows times vs population of the logistic map
 
