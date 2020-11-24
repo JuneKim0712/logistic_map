@@ -12,7 +12,7 @@ def simplify(list_):
             return b
  
  
-class graphit:
+class GraphIt:
     def __init__(self, initial_population, growth_rate):
         self.gr_rate = np.float(growth_rate)
         self.initial = initial_population
@@ -72,7 +72,3 @@ class graphit:
             plt.pause(0.0000001)
             continue
         return
- 
-
-g = graphit(0.5, 0)
-g.graphall(4, 50, 600, 0.01)

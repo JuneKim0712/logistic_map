@@ -2,12 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class graphit:
+class GraphIt:
     def __init__(self, initial_population, growth_rate):
         self.gr_rate = growth_rate
         self.initial = initial_population
         self.all_result = np.array([], dtype=float)
         self.test_popul = initial_population
+        return
 
     def show(self, times):
         while times > 1:
@@ -20,7 +21,7 @@ class graphit:
         self.test_popul = self.initial
         return self.all_result
 
-    def graphcl(self, limit, show_t, grpt):
+    def graph(self, limit, show_t, grpt):
         round_up = len(str(grpt)) - 1
         while self.gr_rate < limit:
             self.all_result = np.array([])
@@ -34,7 +35,4 @@ class graphit:
             plt.pause(0.00001)
             self.gr_rate = np.round(self.gr_rate + grpt, round_up)
             continue
-
-
-g = graphit(0.5, 0)
-g.graphcl(4.0, 100, 0.01)
+        return

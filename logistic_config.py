@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import time as t
 import numpy as np
 
 
@@ -13,7 +12,7 @@ def simplify(list_):
             return b
 
 
-class graphit:
+class GraphIt:
     def __init__(self, initial_population, growth_rate):
         self.gr_rate = growth_rate
         self.initial = initial_population
@@ -30,7 +29,7 @@ class graphit:
         self.test_popul = self.initial
         return simplify(self.all_result[200:])
 
-    def graphcl(self, limit, show_t, grpt):
+    def graph(self, limit, show_t, grpt):
         round_up = len(str(grpt)) - 1
         plt.plot(4, 1)
         plt.ylabel('Equilibrium')
@@ -46,7 +45,3 @@ class graphit:
             continue
         plt.show()
         return
-
-
-g = graphit(0.5, 0)
-g.graphcl(4, 500, 0.0001)
