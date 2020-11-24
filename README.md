@@ -1,6 +1,6 @@
 # logistic_map
 
-Code that Graphs Logistic map in different types and using different values such as times of plotting or showing equilibrium or not
+Code that contain LogsiticMap class that Graphs Logistic map in different types and using different values such as times of plotting or showing equilibrium or not an it could be used mulitiple times in same or different use multiple times since it is a class.
 
 ## Features
  - LogisticMap
