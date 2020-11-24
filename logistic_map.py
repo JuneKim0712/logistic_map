@@ -10,8 +10,8 @@ def simplify(list_):
         list_ = list_[np.where(list_ > list_[0])]
         if list_.size == 0:
             return b
- 
- 
+
+
 class LogisticMap:
     def __init__(self):
         self.growth_rate = np.float(0)
@@ -19,7 +19,7 @@ class LogisticMap:
         self.all_result = np.array([], dtype=float)
         self.test_initial = self.initial
         self.limit = 4.0
-    
+
     def plot(self, finding, times):
         times += 100
         while times > 1:
@@ -28,9 +28,7 @@ class LogisticMap:
             self.test_initial = self.all_result[-1]
             times -= 1
             continue
-
         self.test_initial = self.initial
-
         if finding == 'plots':
             return self.all_result
         else:
@@ -88,13 +86,12 @@ class LogisticMap:
         plt.show()
         return
 
-    def graphall(self, plot_t1, plot_t2, per):
+    def graph_all(self, plot_t1, plot_t2, per):
         round_up = len(str(per)) - 1
         right = plt.subplot(212)
         right.plot(self.limit, 1)
         left = plt.subplot(211)
         left.plot(0, 0)
-
         while self.growth_rate < 1:
             self.all_result = np.array([], dtype=float)
             self.growth_rate = np.round(self.growth_rate + per, round_up)
@@ -106,7 +103,6 @@ class LogisticMap:
             left.plot(0, 0)
             plt.pause(0.000001)
             continue
-
         while self.growth_rate < self.limit:
             self.all_result = np.array([], dtype=float)
             self.growth_rate = np.round(self.growth_rate + per, round_up)
@@ -119,5 +115,4 @@ class LogisticMap:
             left.plot(0, 0)
             plt.pause(0.0000001)
             continue
-
         return
