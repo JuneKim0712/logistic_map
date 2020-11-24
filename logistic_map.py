@@ -121,8 +121,3 @@ class LogisticMap:
             continue
 
         return
-
-
-graph = LogisticMap()
-
-graph.graph_2_config(100, 0.1)
