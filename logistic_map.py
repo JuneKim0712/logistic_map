@@ -21,7 +21,8 @@ class LogisticMap:
         self.limit = 4.0
 
     def plot(self, finding, times):
-        times += 100
+        if finding == 'equilibrium':
+            times += 150
         while times > 1:
             self.all_result = np.append(self.all_result,
                                         np.array([self.growth_rate * self.test_initial * (1 - self.test_initial)]))
@@ -32,7 +33,7 @@ class LogisticMap:
         if finding == 'plots':
             return self.all_result
         else:
-            return simplify(self.all_result[100:])
+            return simplify(self.all_result[150:])
     
     def graph(self, plot_t, per):
         round_up = len(str(per)) - 1
@@ -44,10 +45,10 @@ class LogisticMap:
             plt.xlabel('Times')
             plt.title('growth rate: ' + str(self.growth_rate))
             plt.ylabel('number of result')
-            plt.draw()
             plt.pause(0.00001)
             self.growth_rate = np.round(self.growth_rate + per, round_up)
             continue
+        self.__init__()
         return
 
     def graph_2(self, plot_t, per):
@@ -66,7 +67,7 @@ class LogisticMap:
             plt.pause(0.000001)
             self.growth_rate = np.round(self.growth_rate + per, round_up)
             continue
-        plt.show()
+        self.__init__()
         return
 
     def graph_2_config(self, plot_t, per):
@@ -83,7 +84,8 @@ class LogisticMap:
             plt.plot([self.growth_rate] * (len(y)), y, 'ro', markersize=0.1, markerfacecolor='k', mec='k')
             self.growth_rate = np.round(self.growth_rate + per, round_up)
             continue
-        plt.show()
+        plt.pause(0.000001)
+        self.__init__()
         return
 
     def graph_all(self, plot_t1, plot_t2, per):
@@ -115,4 +117,5 @@ class LogisticMap:
             left.plot(0, 0)
             plt.pause(0.0000001)
             continue
+        self.__init__()
         return
