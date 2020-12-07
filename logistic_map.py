@@ -1,15 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
- 
- 
-def simplify(list_):
-    list_.sort()
-    b = np.array([])
-    while True:
-        b = np.append(b, list_[0])
-        list_ = list_[np.where(list_ > list_[0])]
-        if list_.size == 0:
-            return b
 
 
 class LogisticMap:
@@ -21,19 +11,22 @@ class LogisticMap:
         self.limit = 4.0
 
     def plot(self, finding, times):
-        if finding == 'equilibrium':
-            times += 150
+        if finding == 'equilibrium': times += 150
         while times > 1:
             self.all_result = np.append(self.all_result,
                                         np.array([self.growth_rate * self.test_initial * (1 - self.test_initial)]))
             self.test_initial = self.all_result[-1]
             times -= 1
             continue
-        self.test_initial = self.initial
-        if finding == 'plots':
-            return self.all_result
+        if finding == 'plots': return self.all_result
         else:
-            return simplify(self.all_result[150:])
+            self.all_result.sort()
+            b = np.array([])
+            while True:
+                b = np.append(b, self.all_result[0])
+                self.all_result = self.all_result[np.where(self.all_result > self.all_result[0])]
+                if self.all_result.size == 0: return b
+                else: continue
     
     def graph(self, plot_t, per):
         round_up = len(str(per)) - 1
