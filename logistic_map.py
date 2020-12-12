@@ -47,37 +47,35 @@ class LogisticMap:
         return
 
     def graph_2(self, plot_t, per):
-        round_up = len(str(per)) - 1
         plt.plot(4, 1)
         plt.ylabel('Equilibrium')
         plt.xlabel('growth rate')
         while self.growth_rate < 1:
             plt.plot(self.growth_rate, 0, 'ro', markersize=0.5, markerfacecolor='k', mec='k')
             plt.pause(0.000001)
-            self.growth_rate = np.round(self.growth_rate + per, round_up)
+            self.growth_rate += per
         while self.growth_rate < self.limit:
             self.all_result = np.array([], dtype=float)
             y = self.plot('equilibrium', plot_t)
             plt.plot([self.growth_rate] * (len(y)), y, 'ro', markersize=0.5, markerfacecolor='k', mec='k')
             plt.pause(0.000001)
-            self.growth_rate = np.round(self.growth_rate + per, round_up)
+            self.growth_rate += per
             continue
         self.__init__()
         return
 
     def graph_2_config(self, plot_t, per):
-        round_up = len(str(per)) - 1
         plt.plot(4, 1)
         plt.ylabel('Equilibrium')
         plt.xlabel('growth rate')
         while self.growth_rate < 1:
             plt.plot(self.growth_rate, 0, 'ro', markersize=0.1, markerfacecolor='k', mec='k')
-            self.growth_rate = np.round(self.growth_rate + per, round_up)
+            self.growth_rate += per
         while self.growth_rate < self.limit:
             self.all_result = np.array([], dtype=float)
             y = self.plot('equilibrium', plot_t)
             plt.plot([self.growth_rate] * (len(y)), y, 'ro', markersize=0.1, markerfacecolor='k', mec='k')
-            self.growth_rate = np.round(self.growth_rate + per, round_up)
+            self.growth_rate += per
             continue
         plt.pause(0.000001)
         self.__init__()
@@ -95,7 +93,7 @@ class LogisticMap:
             left.cla()
             plt.title('growth rate: ' + str(self.growth_rate))
             right.set_title('population vs growth rate')
-            left.plot(self.plot('plot', plot_t1), marker='o', markersize=5, markerfacecolor='k')
+            left.plot(self.plot('plots', plot_t1), marker='o', markersize=5, markerfacecolor='k')
             right.plot(self.growth_rate, 0, 'ro', markersize=2, markerfacecolor='k', mec='k')
             left.plot(0, 0)
             plt.pause(0.000001)
@@ -114,8 +112,3 @@ class LogisticMap:
             continue
         self.__init__()
         return
-
-if __name__ == "__main__":
-    g = LogisticMap()
-    g.graph_2(300, 0.01)
-    plt.show()
