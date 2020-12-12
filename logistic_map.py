@@ -18,6 +18,7 @@ class LogisticMap:
             self.test_initial = self.all_result[-1]
             times -= 1
             continue
+        self.test_initial = self.initial
         if finding == 'plots': return self.all_result
         else:
             self.all_result = self.all_result[150:]
@@ -113,3 +114,8 @@ class LogisticMap:
             continue
         self.__init__()
         return
+
+if __name__ == "__main__":
+    g = LogisticMap()
+    g.graph_2(300, 0.01)
+    plt.show()
