@@ -20,6 +20,7 @@ class LogisticMap:
             continue
         if finding == 'plots': return self.all_result
         else:
+            self.all_result = self.all_result[150:]
             self.all_result.sort()
             b = np.array([])
             while True:
